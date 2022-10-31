@@ -11,5 +11,13 @@ app.listen(port, () => {
 })
 
 app.post('/getMessage', (req, res) => {
-  res.send('get')
+  console.log(req.body)
+  const resModal = `<xml>
+  <ToUserName><![CDATA[toUser]]></ToUserName>
+  <FromUserName><![CDATA[fromUser]]></FromUserName>
+  <CreateTime>12345678</CreateTime>
+  <MsgType><![CDATA[text]]></MsgType>
+  <Content><![CDATA[你好]]></Content>
+</xml>`
+  res.send(resModal)
 })
