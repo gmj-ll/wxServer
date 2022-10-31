@@ -11,13 +11,12 @@ app.listen(port, () => {
 })
 
 app.post('/getMessage', (req, res) => {
-  console.log(req.body)
-  const resModal = `<xml>
-  <ToUserName><![CDATA[toUser]]></ToUserName>
-  <FromUserName><![CDATA[fromUser]]></FromUserName>
-  <CreateTime>12345678</CreateTime>
-  <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[你好]]></Content>
-</xml>`
+  const resModal = {
+    ToUserName: req.ToUserName,
+    FromUserName: req.FromUserName,
+    CreateTime: new Date().getTime(),
+    MsgType: 'text',
+    Content: '111'
+  }
   res.send(resModal)
 })
