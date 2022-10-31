@@ -1,5 +1,8 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const app = express()
+
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.send('欢迎使用微信云托管！')
@@ -12,8 +15,8 @@ app.listen(port, () => {
 
 app.post('/getMessage', (req, res) => {
   const resModal = {
-    ToUserName: req.ToUserName,
-    FromUserName: req.FromUserName,
+    ToUserName: req.body.ToUserName,
+    FromUserName: req.body.FromUserName,
     CreateTime: new Date().getTime(),
     MsgType: 'text',
     Content: '111'
